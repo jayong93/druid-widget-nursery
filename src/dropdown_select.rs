@@ -65,7 +65,7 @@ impl<T: Data + PartialEq> DropdownSelect<T> {
                 .clone()
                 .into_iter()
                 .find_map(|(label, variant)| if *t == variant { Some(label) } else { None })
-                .unwrap()
+                .unwrap_or_default()
         })
         .on_click(|ctx: &mut EventCtx, t: &mut DropdownState<T>, _| {
             t.expanded = true;
